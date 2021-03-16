@@ -4,9 +4,11 @@ Code for testing software triggered acquisition from FLIR USB3 cameras on Raspbe
 
 PTP easily syncs clocks better than 1 ms across Pis, but how does software triggering work, and what kind of frame rates can we achieve while still getting good sync?
 
-### Hardware details.
+The FLIR Spinnaker SDK works pretty well, but it's a pretty tough read. I created a little Python wrapper that handles cacamera reference setup and cleanup and exposes the features I needed. It's rough but usuable and should be a good guide to help you get started.
 
-I used the camera: [BFS-U3-23S3M-C](https://www.flir.com/products/blackfly-s-usb3/?model=BFS-U3-23S3M-C): it's a 2.3 MP (1920x1200) camera with a nominal 163 Hz frame rate. (I achieved that frame rate fine on a MacBook Pro.) For all these tests I verified the shutter window using an oscilloscope on the camera's digital outputs. I also used a Raspberry Pi 4, with 8 GB of RAM.
+### Hardware details
+
+I used the camera: [BFS-U3-23S3M-C](https://www.flir.com/products/blackfly-s-usb3/?model=BFS-U3-23S3M-C): it's a 2.3 MP (1920x1200) camera with a nominal 163 Hz frame rate. (I achieved that frame rate fine on a MacBook Pro.) For all these tests I verified the shutter window using an oscilloscope on the camera's digital outputs. I also used a Raspberry Pi 4, with 8 GB of RAM. The Pi was connected to my network with a Gigabit switch, and I ensured the link was operating in Gigabit mode.
 
 ### USB3 Performance
 
@@ -27,11 +29,11 @@ This "doughnut hole" effect where frame rates around 70 Hz don't work well is to
 ![Stability by frame rate at 5 ms](Figure_1.png)
 ![Stability by frame rate at 2 ms](Figure_2.png)
 
-### Other Key Points:
+### Other Key Points
 - Obviously long exposure times can prevent high frame rates
 - Set TriggerOverlap to ReadOut to allow a new frame to be triggered while the old frame is still reading-out
 
-### Installation notes:
+### Installation notes
 
 I used Ubuntu 20.04 LTS
 
