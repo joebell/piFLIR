@@ -31,6 +31,25 @@ This "doughnut hole" effect where frame rates around 70 Hz don't work well is to
 - Obviously long exposure times can prevent high frame rates
 - Set TriggerOverlap to ReadOut to allow a new frame to be triggered while the old frame is still reading-out
 
+### Installation notes:
 
+I used Ubuntu 20.04 LTS
+
+```
+sudo apt install libusb-1.0-0 python3-pip ptpd net-tools
+pip3 install numpy
+pip3 install matplotlib
+pip3 install RPi.GPIO
+sudo apt install rpi.gpio-common
+sudo apt-get install python3-tk
+```
+
+Install both:
+```
+spinnaker-2.2.0.48-Ubuntu20.04-arm64-pkg.tar.gz
+spinnaker_python-2.2.0.48-Ubuntu20.04-cp38-cp38-linux_aarch64.tar.gz
+tar xvfz *.gz
+sudo ./install_spinnaker_arm.sh
+```
 
 
