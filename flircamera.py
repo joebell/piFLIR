@@ -38,7 +38,19 @@ class FlirCamera:
         self.setPixelFormat(PySpin.PixelFormat_Mono8)
         self.setLineMode('Line2','Output')
         self.setAcquisitionMode('Continuous')
+        self.setTriggerOverlap('ReadOut')
         self.checkOtherValues()
+
+    def setTriggerOverlap(self, mode):
+        if self.cam.TriggerOverlap.GetAccessMode() == PySpin.RW:
+            node_to = PySpin.CEnumerationPtr(self.nodemap.GetNode('TriggerOverlap'))
+            entry = node_to.GetEntryByName(mode)
+            value = entry.GetValue()
+            node_to.SetIntValue(value)
+            # self.cam.TriggerOverlap.SetValue(mode)
+            print('TriggerOverlap set to %s...' % self.cam.TriggerOverlap.GetCurrentEntry().GetSymbolic())
+        else:
+            print('TriggerOverlap not available...')
 
     def configureTrigger(self, triggerType):
         configure_trigger(self.cam, triggerType)    

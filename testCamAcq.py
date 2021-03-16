@@ -87,7 +87,7 @@ def main():
     
     nFrames = 1000
     frameRates = []
-    frameRates.extend(range(30,151,1))
+    frameRates.extend(range(30,130,10))
 
     stdTimes = [] 
     for frameRate in frameRates:
