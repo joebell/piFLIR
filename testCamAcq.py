@@ -42,7 +42,7 @@ def test(nFrames, frameRate):
 
     fs = FlirSystem()
     camera = fs.cameras[0] 
-    camera.setExposure(5000)
+    camera.setExposure(2000)
 
     camera.cam.BeginAcquisition()
 
@@ -86,8 +86,10 @@ def test(nFrames, frameRate):
     return np.std(acqTimes)
 
 def main():
-   
-    if False:
+  
+    reRun = True
+
+    if reRun:
         nFrames = 1000
         frameRates = []
         frameRates.extend(range(30,151,1))
@@ -108,6 +110,7 @@ def main():
     plt.plot(frameRates, stdTimes)
     plt.xlabel('Frame rate (Hz)');
     plt.ylabel('Std(frame interval) (s)')
+    plt.title('Stability for 2 ms exposure')
     plt.show()
     
 
