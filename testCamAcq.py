@@ -42,6 +42,7 @@ def test(nFrames, frameRate):
 
     fs = FlirSystem()
     camera = fs.cameras[0] 
+    camera.setExposure(5000)
 
     camera.cam.BeginAcquisition()
 
@@ -88,7 +89,7 @@ def main():
     
     nFrames = 1000
     frameRates = []
-    frameRates.extend(range(30,34,2))
+    frameRates.extend(range(30,151,1))
 
     stdTimes = [] 
     for frameRate in frameRates:
