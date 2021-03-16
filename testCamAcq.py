@@ -9,6 +9,7 @@ import numpy as np
 import threading
 import matplotlib.pyplot as plt
 import RPi.GPIO as GPIO
+import pickle
 
 # Setup a Raspberry Pi GPIO pin for output
 pinNumber = 21
@@ -87,11 +88,15 @@ def main():
     
     nFrames = 1000
     frameRates = []
-    frameRates.extend(range(30,130,10))
+    frameRates.extend(range(30,34,2))
 
     stdTimes = [] 
     for frameRate in frameRates:
+        print('Testing framerate: %d' % (frameRate))
         stdTimes.append(test(nFrames,frameRate))
+
+    with open('saveData.pkl', 'wb') as f:
+        pickle.dump([frameRates, stdTimes], f)
 
     plt.plot(frameRates, stdTimes)
     plt.xlabel('Frame rate (Hz)');

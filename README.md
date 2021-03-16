@@ -26,7 +26,7 @@ This "doughnut hole" effect where frame rates around 70 Hz don't work well is to
 
 ![Stability by frame rate](Figure_1.png)
 
-*Other Key Points:*
+### Other Key Points:
 - Obviously long exposure times can prevent high frame rates
 - Set TriggerOverlap to ReadOut to allow a new frame to be triggered while the old frame is still reading-out
 
