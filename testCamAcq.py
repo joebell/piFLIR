@@ -86,18 +86,24 @@ def test(nFrames, frameRate):
     return np.std(acqTimes)
 
 def main():
-    
-    nFrames = 1000
-    frameRates = []
-    frameRates.extend(range(30,151,1))
+   
+    if False:
+        nFrames = 1000
+        frameRates = []
+        frameRates.extend(range(30,151,1))
 
-    stdTimes = [] 
-    for frameRate in frameRates:
-        print('Testing framerate: %d' % (frameRate))
-        stdTimes.append(test(nFrames,frameRate))
+        stdTimes = [] 
+        for frameRate in frameRates:
+            print('Testing framerate: %d' % (frameRate))
+            stdTimes.append(test(nFrames,frameRate))
 
-    with open('saveData.pkl', 'wb') as f:
-        pickle.dump([frameRates, stdTimes], f)
+        with open('saveData.pkl', 'wb') as f:
+            pickle.dump([frameRates, stdTimes], f)
+    else:
+        with open('saveData.pkl', 'rb') as f:
+            data = pickle.load(f)
+        frameRates = data[0]
+        stdTimes = data[1]
 
     plt.plot(frameRates, stdTimes)
     plt.xlabel('Frame rate (Hz)');
