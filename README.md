@@ -24,7 +24,8 @@ Some parts of data readout from the camera are blocking, and won't allow the Pyt
 
 This "doughnut hole" effect where frame rates around 70 Hz don't work well is totally surmountable; you just need to ensure that you don't start a readout unless you have enough time to finish it. Of course, for different frame sizes and exposure times your mileage about exactly where this effect occurs may vary. Here a plot shows the standard deviation of the inter-frame interval (measured at completion of read-out) for acquiring 3000 frames at a variety of frame rates, for a 5 ms exposure time.
 
-![Stability by frame rate](Figure_1.png)
+![Stability by frame rate at 5 ms](Figure_1.png)
+![Stability by frame rate at 2 ms](Figure_2.png)
 
 ### Other Key Points:
 - Obviously long exposure times can prevent high frame rates
